@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Repository | xT-GK</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">xT-GK</div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#methodology">Methodology</a></li>
+                <li><a href="../index.html#applications">Applications</a></li>
+                <li><a href="../index.html#case-studies">Case Studies</a></li>
+                <li class="dropdown">
+                    <a href="../index.html#resources" class="active">Resources</a>
+                    <div class="dropdown-content">
+                        <a href="technical-documentation.html">Technical Documentation</a>
+                        <a href="training-session-plans.html">Training Session Plans</a>
+                        <a href="code-repository.html">Code Repository</a>
+                        <a href="analysis-templates.html">Analysis Templates</a>
+                    </div>
+                </li>
+                <li><a href="../math-details.html">Mathematical Details</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="resource-page">
+            <div class="container">
+                <h1>Code Repository</h1>
+                <div class="resource-content">
+                    <div class="resource-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="resource-description">
+                        <p>Python implementation of the xT-GK model, including data processing, analysis, and visualization tools for practical application.</p>
+                        
+                        <h2>Repository Contents</h2>
+                        <p>The xT-GK code repository contains a complete Python implementation of the framework, with modules for:</p>
+                        <ul>
+                            <li><strong>Data Processing</strong>: Tools for importing and cleaning event data from various providers</li>
+                            <li><strong>Model Implementation</strong>: Core xT-GK algorithms and mathematical components</li>
+                            <li><strong>Analysis Tools</strong>: Functions for goalkeeper distribution analysis</li>
+                            <li><strong>Visualization</strong>: Plotting and visualization utilities for creating insightful graphics</li>
+                            <li><strong>Example Notebooks</strong>: Jupyter notebooks demonstrating practical applications</li>
+                        </ul>
+                        
+                        <h2>Key Features</h2>
+                        <p>The implementation includes several key features:</p>
+                        <ul>
+                            <li><strong>Pressure Tensor Calculation</strong>: Algorithms for quantifying pressure intensity and direction</li>
+                            <li><strong>Distribution Value Estimation</strong>: Implementation of the core xT-GK valuation formula</li>
+                            <li><strong>Sequence Analysis</strong>: Tools for analyzing temporal sequences of distribution events</li>
+                            <li><strong>Interactive Visualizations</strong>: Functions for creating dynamic visualizations of distribution options</li>
+                            <li><strong>Performance Metrics</strong>: Standardized metrics for goalkeeper distribution evaluation</li>
+                        </ul>
+                        
+                        <h2>Usage Examples</h2>
+                        <pre><code>
+# Import the xT-GK package
+import xt_gk
+
+# Load event data
+events = xt_gk.load_events('match_data.json')
+
+# Calculate pressure tensors
+pressure = xt_gk.calculate_pressure(events)
+
+# Evaluate distribution options
+options = xt_gk.evaluate_distribution_options(
+    goalkeeper_position=(50, 10),
+    pressure_tensor=pressure,
+    risk_parameter=0.7
+)
+
+# Visualize results
+xt_gk.plot_distribution_options(options)
+                        </code></pre>
+                        
+                        <div class="download-section">
+                            <p>Access the complete code repository for the full implementation and documentation.</p>
+                            <a href="../resources/xt_gk_analyzer.py" download class="download-button">Download Code Repository</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>Jeffrey Eyestone</h3>
+                    <p>Email: j@eyestone.us</p>
+                    <p>Phone: +1 (720) 625-2425</p>
+                </div>
+                <div class="footer-links">
+                    <a href="../index.html">Home</a>
+                    <a href="../index.html#about">About</a>
+                    <a href="../index.html#methodology">Methodology</a>
+                    <a href="../index.html#applications">Applications</a>
+                    <a href="../index.html#case-studies">Case Studies</a>
+                    <a href="../index.html#resources">Resources</a>
+                    <a href="../math-details.html">Mathematical Details</a>
+                    <a href="../index.html#contact">Contact</a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Jeffrey Eyestone. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile navigation toggle
+            const burger = document.querySelector('.burger');
+            const nav = document.querySelector('.nav-links');
+            
+            burger.addEventListener('click', function() {
+                nav.classList.toggle('nav-active');
+                burger.classList.toggle('toggle');
+            });
+            
+            // Dropdown functionality
+            const dropdowns = document.querySelectorAll('.dropdown');
+            
+            dropdowns.forEach(dropdown => {
+                dropdown.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        this.querySelector('.dropdown-content').classList.toggle('show');
+                    }
+                });
+            });
+            
+            // Close dropdowns when clicking outside
+            window.addEventListener('click', function(e) {
+                dropdowns.forEach(dropdown => {
+                    if (!dropdown.contains(e.target)) {
+                        dropdown.querySelector('.dropdown-content').classList.remove('show');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>xT-GK: Expected Threat for Goalkeepers | Jeffrey Eyestone</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">xT-GK</div>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#methodology">Methodology</a></li>
+                <li><a href="#applications">Applications</a></li>
+                <li><a href="#case-studies">Case Studies</a></li>
+                <li><a href="#resources">Resources</a></li>
+                <li><a href="math-details.html">Mathematical Details</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>xT-GK: Expected Threat for Goalkeepers</h1>
+            <h2>Revolutionizing Goalkeeper Analytics</h2>
+            <p>A comprehensive framework for properly valuing goalkeeper distribution in the modern game</p>
+            <div class="cta-buttons">
+                <a href="#methodology" class="cta-button primary">Explore the Framework</a>
+                <a href="#applications" class="cta-button secondary">See Applications</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="images/title_visual.png" alt="xT-GK Visualization">
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>The Problem: Goalkeepers Are Underrepresented in Analytics</h2>
+            </div>
+            <div class="content-columns">
+                <div class="content-column fade-in">
+                    <h3>Current Limitations</h3>
+                    <p>Traditional Expected Threat (xT) models fail to properly value goalkeeper distribution decisions. These models were designed for outfield players and don't account for the unique context of goalkeeper actions.</p>
+                    <p>Goalkeepers face distinct challenges that aren't captured by standard metrics:</p>
+                    <ul>
+                        <li>Varying pressure scenarios that significantly impact decision-making</li>
+                        <li>Different risk-reward calculations than outfield players</li>
+                        <li>Unique positional responsibilities that affect distribution choices</li>
+                        <li>Tactical considerations specific to initiating possession sequences</li>
+                    </ul>
+                </div>
+                <div class="content-column fade-in">
+                    <h3>The xT-GK Solution</h3>
+                    <p>xT-GK extends the traditional xT framework with goalkeeper-specific considerations, creating a comprehensive model that properly values goalkeeper distribution decisions.</p>
+                    <p>The framework incorporates:</p>
+                    <ul>
+                        <li>Pressure-adjusted transition probabilities</li>
+                        <li>Defensive zone revaluation</li>
+                        <li>Pressure escape value calculations</li>
+                        <li>Risk-adjusted value functions</li>
+                        <li>Context-specific decision trees</li>
+                    </ul>
+                    <p>This approach provides a mathematically rigorous yet practically applicable framework for analyzing goalkeeper distribution.</p>
+                </div>
+            </div>
+            <div class="content-columns">
+                <div class="content-column fade-in">
+                    <img src="images/xt_breakdown_visual.png" alt="Traditional xT Breakdown" class="full-width-image">
+                </div>
+                <div class="content-column fade-in">
+                    <img src="images/xtgk_concept.png" alt="xT-GK Concept" class="full-width-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="methodology" class="methodology">
+        <div class="container">
+            <div class="section-title">
+                <h2>xT-GK Methodology</h2>
+            </div>
+            <p>The xT-GK framework builds upon traditional Expected Threat (xT) by incorporating goalkeeper-specific factors that significantly impact distribution value. This methodology provides a comprehensive approach to evaluating goalkeeper distribution decisions.</p>
+            
+            <div class="methodology-grid">
+                <div class="methodology-card fade-in">
+                    <h3>Core Formula</h3>
+                    <p>The xT-GK formula extends traditional xT with pressure considerations:</p>
+                    <div class="math-formula">
+                        <p>xT-GK(z, z', p) = xT(z') + PEV(z, z', p) - RAV(z, z', p)</p>
+                    </div>
+                    <p>Where:</p>
+                    <ul>
+                        <li>z = starting zone</li>
+                        <li>z' = target zone</li>
+                        <li>p = pressure level</li>
+                        <li>PEV = Pressure Escape Value</li>
+                        <li>RAV = Risk-Adjusted Value</li>
+                    </ul>
+                </div>
+                
+                <div class="methodology-card fade-in">
+                    <h3>Pressure Tensor</h3>
+                    <p>Pressure is represented as a multi-dimensional tensor that captures:</p>
+                    <ul>
+                        <li>Proximity of opposing players</li>
+                        <li>Time available for decision-making</li>
+                        <li>Angle of pressure application</li>
+                        <li>Pressing intensity</li>
+                    </ul>
+                    <p>This allows for nuanced analysis of how different pressure scenarios affect distribution choices.</p>
+                </div>
+                
+                <div class="methodology-card fade-in">
+                    <h3>Pressure Escape Value (PEV)</h3>
+                    <p>PEV quantifies the value of escaping pressure through distribution:</p>
+                    <div class="math-formula">
+                        <p>PEV(z, z', p) = γ · (p_level - p'_level) · xT(z')</p>
+                    </div>
+                    <p>Where γ is a scaling parameter (typically 0.25) and p_level represents pressure intensity.</p>
+                </div>
+                
+                <div class="methodology-card fade-in">
+                    <h3>Risk-Adjusted Value (RAV)</h3>
+                    <p>RAV accounts for the risk associated with distribution choices:</p>
+                    <div class="math-formula">
+                        <p>RAV(z, z', p) = xT(z') · δ · P_loss(z, z', p) · C(z)</p>
+                    </div>
+                    <p>Where δ is a risk aversion parameter, P_loss is the probability of losing possession, and C(z) is the cost function for zone z.</p>
+                </div>
+                
+                <div class="methodology-card fade-in">
+                    <h3>Spatial Convolution</h3>
+                    <p>The model applies spatial convolution to account for the influence of nearby zones:</p>
+                    <div class="math-formula">
+                        <p>φ(z, d) = α · (1 - d/D_max)^(-β)</p>
+                    </div>
+                    <p>Where d is the distance between zones, and α and β are parameters that control the decay rate.</p>
+                </div>
+                
+                <div class="methodology-card fade-in">
+                    <h3>Temporal Sequence Modeling</h3>
+                    <p>xT-GK incorporates temporal discounting to value distribution sequences:</p>
+                    <div class="math-formula">
+                        <p>V_sequence = Σ η^t · xT-GK(z_t, z_{t+1}, p_t)</p>
+                    </div>
+                    <p>Where η is a discount factor (typically 0.8) and t represents time steps in the sequence.</p>
+                </div>
+            </div>
+            
+            <div class="methodology-visualization fade-in">
+                <h3>Visual Representation of xT-GK</h3>
+                <img src="images/pitch-diagram.svg" alt="xT-GK Pitch Diagram" class="full-width-image">
+                <p class="image-caption">Visualization of goalkeeper distribution options with associated xT-GK values under different pressure scenarios.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="applications" class="applications">
+        <div class="container">
+            <div class="section-title">
+                <h2>Practical Applications of xT-GK</h2>
+            </div>
+            <p>The xT-GK framework provides valuable insights across multiple areas of football operations. Each application area demonstrates how the mathematical foundations translate into practical value for teams, coaches, and players.</p>
+            
+            <div class="application-cards">
+                <div class="application-card fade-in">
+                    <div class="application-image">
+                        <img src="images/gk_distribution_by_pressure_fixed.png" alt="In-Game Decision Making">
+                    </div>
+                    <div class="application-content">
+                        <h3>In-Game Decision Making</h3>
+                        <p>xT-GK provides goalkeepers with a framework for optimal distribution decisions based on pressure scenarios, game state, and tactical considerations.</p>
+                        <p><strong>Practical Usage:</strong> Goalkeepers can use this analysis to identify high-value distribution options under varying pressure levels, improving decision-making in real-time game situations.</p>
+                        <p><strong>Team Customization:</strong> Adjustable risk parameters (δ) allow teams to align distribution strategies with their tactical philosophy, whether possession-focused or counter-attacking.</p>
+                    </div>
+                </div>
+                
+                <div class="application-card fade-in">
+                    <div class="application-image">
+                        <img src="images/gk_distribution_success_heatmap.png" alt="Opposition Analysis (Our GK)">
+                    </div>
+                    <div class="application-content">
+                        <h3>Opposition Analysis (Our GK)</h3>
+                        <p>Prepare your goalkeeper for upcoming matches by analyzing how opposition pressing patterns affect distribution success rates and identifying optimal targets.</p>
+                        <p><strong>Practical Usage:</strong> Coaches can develop game-specific distribution plans that exploit weaknesses in opposition pressing structures, increasing successful progression from the defensive third.</p>
+                        <p><strong>Team Customization:</strong> The spatial convolution parameters (α, β) can be adjusted to emphasize specific zones based on team strengths and opposition weaknesses.</p>
+                    </div>
+                </div>
+                
+                <div class="application-card fade-in">
+                    <div class="application-image">
+                        <img src="images/gk_pressing_triggers.png" alt="Opposition Analysis (Their GK)">
+                    </div>
+                    <div class="application-content">
+                        <h3>Opposition Analysis (Their GK)</h3>
+                        <p>Identify optimal pressing triggers and structures to exploit opposition goalkeeper distribution tendencies and force turnovers in dangerous areas.</p>
+                        <p><strong>Practical Usage:</strong> Teams can design pressing schemes that target specific distribution patterns, increasing the likelihood of regaining possession in advanced positions.</p>
+                        <p><strong>Team Customization:</strong> The pressure tensor representation can be modified to reflect a team's pressing intensity and structure preferences.</p>
+                    </div>
+                </div>
+                
+                <div class="application-card fade-in">
+                    <div class="application-image">
+                        <img src="images/team_coordination_patterns.png" alt="Team Coordination">
+                    </div>
+                    <div class="application-content">
+                        <h3>Team Coordination</h3>
+                        <p>Develop optimal positioning patterns for outfield players to maximize the value of goalkeeper distribution and create progressive possession sequences.</p>
+                        <p><strong>Practical Usage:</strong> Coaches can implement coordinated movement patterns that create high-value distribution options, improving team build-up play from the goalkeeper.</p>
+                        <p><strong>Team Customization:</strong> The temporal sequence modeling parameter (η) can be adjusted to emphasize immediate progression or longer build-up sequences.</p>
+                    </div>
+                </div>
+                
+                <div class="application-card fade-in">
+                    <div class="application-image">
+                        <img src="images/training_development.png" alt="Training Development">
+                    </div>
+                    <div class="application-content">
+                        <h3>Training Development</h3>
+                        <p>Design targeted training programs to improve goalkeeper distribution decision-making and execution under various pressure scenarios.</p>
+                        <p><strong>Practical Usage:</strong> Goalkeeper coaches can create progressive training exercises that systematically develop distribution skills across different pressure contexts.</p>
+                        <p><strong>Team Customization:</strong> The risk-adjusted value function can be modified to emphasize specific distribution skills that align with team playing style.</p>
+                    </div>
+                </div>
+                
+                <div class="application-card fade-in">
+                    <div class="application-image">
+                        <img src="images/scouting_profiles.png" alt="Scouting">
+                    </div>
+                    <div class="application-content">
+                        <h3>Scouting</h3>
+                        <p>Evaluate goalkeeper distribution capabilities using standardized metrics that account for context, pressure, and risk-adjusted value.</p>
+                        <p><strong>Practical Usage:</strong> Recruitment teams can identify goalkeepers whose distribution profiles match team tactical requirements, improving transfer decision-making.</p>
+                        <p><strong>Team Customization:</strong> The component weights in the evaluation framework can be adjusted to prioritize specific distribution attributes based on team needs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="case-studies" class="case-studies">
+        <div class="container">
+            <div class="section-title">
+                <h2>Case Studies: La Liga 2015/2016</h2>
+            </div>
+            <p>These case studies demonstrate the pr
+(Content truncated due to size limit. Use line ranges to read in chunks)

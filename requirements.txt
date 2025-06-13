@@ -4,3 +4,11 @@ numpy
 pandas
 matplotlib
 kaleido
+
+
+
+weasyprint
+jinja2
+requests
+
+

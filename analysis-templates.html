@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis Templates | xT-GK</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">xT-GK</div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#methodology">Methodology</a></li>
+                <li><a href="../index.html#applications">Applications</a></li>
+                <li><a href="../index.html#case-studies">Case Studies</a></li>
+                <li class="dropdown">
+                    <a href="../index.html#resources" class="active">Resources</a>
+                    <div class="dropdown-content">
+                        <a href="technical-documentation.html">Technical Documentation</a>
+                        <a href="training-session-plans.html">Training Session Plans</a>
+                        <a href="code-repository.html">Code Repository</a>
+                        <a href="analysis-templates.html">Analysis Templates</a>
+                    </div>
+                </li>
+                <li><a href="../math-details.html">Mathematical Details</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="resource-page">
+            <div class="container">
+                <h1>Analysis Templates</h1>
+                <div class="resource-content">
+                    <div class="resource-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <div class="resource-description">
+                        <p>Ready-to-use templates for goalkeeper distribution analysis, opposition scouting, and performance evaluation using xT-GK metrics.</p>
+                        
+                        <h2>Template Collection</h2>
+                        <p>This collection includes professionally designed templates for various goalkeeper analysis scenarios:</p>
+                        <ul>
+                            <li><strong>Individual Performance Analysis</strong>: Templates for evaluating a goalkeeper's distribution performance</li>
+                            <li><strong>Opposition Analysis</strong>: Templates for scouting opposition goalkeeper tendencies and pressing patterns</li>
+                            <li><strong>Team Coordination</strong>: Templates for analyzing team movement patterns in relation to goalkeeper distribution</li>
+                            <li><strong>Match Preparation</strong>: Templates for pre-match distribution planning</li>
+                            <li><strong>Development Tracking</strong>: Templates for monitoring goalkeeper distribution improvement over time</li>
+                        </ul>
+                        
+                        <h2>Template Features</h2>
+                        <p>Each template includes:</p>
+                        <ul>
+                            <li><strong>Data Input Sections</strong>: Structured fields for entering match and distribution data</li>
+                            <li><strong>Visualization Layouts</strong>: Pre-designed charts and diagrams for clear data presentation</li>
+                            <li><strong>Analysis Frameworks</strong>: Guided analysis structures based on xT-GK principles</li>
+                            <li><strong>Recommendation Formats</strong>: Standardized formats for presenting actionable insights</li>
+                            <li><strong>Customization Options</strong>: Adjustable parameters to fit specific team contexts</li>
+                        </ul>
+                        
+                        <h2>Example: Opposition Analysis Template</h2>
+                        <div class="template-preview">
+                            <h3>Opposition Goalkeeper Analysis</h3>
+                            <div class="template-section">
+                                <h4>1. Distribution Patterns</h4>
+                                <ul>
+                                    <li>Primary distribution targets: _______</li>
+                                    <li>Distribution under high pressure: _______</li>
+                                    <li>Distribution under medium pressure: _______</li>
+                                    <li>Distribution under low pressure: _______</li>
+                                </ul>
+                            </div>
+                            <div class="template-section">
+                                <h4>2. Pressing Triggers</h4>
+                                <ul>
+                                    <li>Optimal pressing distance: _______</li>
+                                    <li>Pressing angles: _______</li>
+                                    <li>Recovery positioning: _______</li>
+                                </ul>
+                            </div>
+                            <div class="template-section">
+                                <h4>3. Tactical Recommendations</h4>
+                                <ul>
+                                    <li>Primary pressing target: _______</li>
+                                    <li>Secondary pressing target: _______</li>
+                                    <li>Pressing intensity: _______</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="download-section">
+                            <p>Download the complete set of analysis templates for immediate use in your goalkeeper analysis workflow.</p>
+                            <a href="../resources/analysis_templates.md" download class="download-button">Download Analysis Templates</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>Jeffrey Eyestone</h3>
+                    <p>Email: j@eyestone.us</p>
+                    <p>Phone: +1 (720) 625-2425</p>
+                </div>
+                <div class="footer-links">
+                    <a href="../index.html">Home</a>
+                    <a href="../index.html#about">About</a>
+                    <a href="../index.html#methodology">Methodology</a>
+                    <a href="../index.html#applications">Applications</a>
+                    <a href="../index.html#case-studies">Case Studies</a>
+                    <a href="../index.html#resources">Resources</a>
+                    <a href="../math-details.html">Mathematical Details</a>
+                    <a href="../index.html#contact">Contact</a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Jeffrey Eyestone. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile navigation toggle
+            const burger = document.querySelector('.burger');
+            const nav = document.querySelector('.nav-links');
+            
+            burger.addEventListener('click', function() {
+                nav.classList.toggle('nav-active');
+                burger.classList.toggle('toggle');
+            });
+            
+            // Dropdown functionality
+            const dropdowns = document.querySelectorAll('.dropdown');
+            
+            dropdowns.forEach(dropdown => {
+                dropdown.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        this.querySelector('.dropdown-content').classList.toggle('show');
+                    }
+                });
+            });
+            
+            // Close dropdowns when clicking outside
+            window.addEventListener('click', function(e) {
+                dropdowns.forEach(dropdown => {
+                    if (!dropdown.contains(e.target)) {
+                        dropdown.querySelector('.dropdown-content').classList.remove('show');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

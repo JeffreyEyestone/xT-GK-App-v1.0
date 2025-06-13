@@ -1,100 +1,97 @@
 import streamlit as st
-import pandas as pd
-import numpy as np
-import plotly.graph_objects as go
-from utils.data_loader import StatsBombDataLoader
-from utils.visualizations import create_pitch, plot_goalkeeper_distribution
+import sys
+import os
 
+# Add utils to path
+sys.path.append(os.path.join(os.path.dirname(__file__), 'utils'))
+from data_loader import StatsBombDataLoader
+from visualizations import create_pitch, create_radar_chart
+
+# Set page configuration
 st.set_page_config(
-    page_title="xT-GK: Expected Threat for Goalkeepers",
+    page_title="xT-GK Analysis | Interactive Templates",
     page_icon="⚽",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
-# Load data
+# Initialize data loader
+@st.cache_resource
 def load_data():
     data_loader = StatsBombDataLoader()
     return data_loader
 
 data_loader = load_data()
 
-# Main page
+# Main page content
 st.title("xT-GK: Expected Threat for Goalkeepers")
+st.subheader("Interactive Analysis Templates")
+
 st.markdown("""
-This application provides analysis of goalkeeper distribution using the Expected Threat (xT) framework.
-Navigate through the pages in the sidebar to explore different aspects of goalkeeper analysis.
+Welcome to the xT-GK Analysis Platform. This interactive tool provides comprehensive templates for analyzing goalkeeper distribution using the Expected Threat for Goalkeepers (xT-GK) framework.
+
+The analysis is powered by real La Liga data from the StatsBomb Open Data project, providing authentic insights into goalkeeper distribution patterns and decision-making.
+
+### What is xT-GK?
+
+xT-GK is a revolutionary framework for properly valuing goalkeeper distribution in the modern game. It extends the Expected Threat (xT) model to specifically evaluate goalkeeper actions, considering:
+
+- Distribution Value (DV): The value created through pass selection and execution
+- Pressure Escape Value (PEV): The value of successfully playing through opposition pressure
+- Build-up Contribution (BC): The goalkeeper's contribution to sustained possession sequences
+- Risk-Adjusted Value (RAV): Accounting for the risk context of each decision
+
+### How to Use This Tool
+
+Select an analysis template from the sidebar to explore different aspects of goalkeeper distribution:
+
+1. **In-Game Decision Making**: Optimize distribution choices based on game state and pressure scenarios
+2. **Opposition Analysis (Our GK)**: Prepare your goalkeeper for upcoming opponents
+3. **Opposition Analysis (Their GK)**: Exploit opposition goalkeeper tendencies
+4. **Team Coordination**: Optimize outfield player positioning for distribution
+5. **Training Development**: Design targeted training programs for distribution skills
+6. **Goalkeeper Scouting**: Evaluate distribution profiles for recruitment
+
+Each template provides interactive controls and visualizations to help you apply xT-GK principles to your specific context.
 """)
 
-# Overview section
-st.header("Overview")
-st.markdown("""
-The xT-GK application helps coaches, analysts, and players make data-driven decisions about goalkeeper distribution patterns.
-It provides insights into:
+# Display data overview
+st.header("Data Overview")
 
-- In-game decision making
-- Opposition analysis
-- Team coordination
-- Training development
-- Goalkeeper scouting
+# Get sample data
+sample_data = data_loader.get_sample_data()
+gk_data = sample_data['goalkeeper_data']
+match_info = sample_data['match_info']
 
-Select a page from the sidebar to begin your analysis.
-""")
+# Convert to DataFrame for display
+import pandas as pd
+gk_df = pd.DataFrame(gk_data)
+match_df = pd.DataFrame(match_info)
 
-# Sample visualization
-st.header("Sample Visualization")
-with st.container():
-    st.markdown("Below is a sample visualization of goalkeeper distribution patterns:")
-    fig = create_pitch(width=700, height=500)
-    # Add sample data points
-    sample_positions = {
-        "GK": [50, 10],
-        "RCB": [30, 30],
-        "LCB": [30, 70],
-        "RB": [40, 15],
-        "LB": [40, 85],
-        "CDM": [60, 50],
-        "RCM": [70, 30],
-        "LCM": [70, 70],
-        "RW": [80, 20],
-        "LW": [80, 80],
-        "ST": [85, 50]
-    }
+# Display match information
+st.subheader("Sample Matches")
+st.dataframe(match_df[['match_id', 'home_team', 'away_team', 'competition', 'season']], use_container_width=True)
+
+# Display goalkeeper data
+st.subheader("Goalkeeper Distribution Data")
+if not gk_df.empty:
+    # Select columns to display
+    display_cols = ['player_name', 'team_name', 'total_passes', 'success_rate', 
+                    'short_pass_pct', 'long_pass_pct', 'pressure_pct']
     
-    # Add sample connections
-    connections = [
-        ("GK", "RCB", 0.8),
-        ("GK", "LCB", 0.7),
-        ("GK", "CDM", 0.4),
-        ("GK", "RB", 0.3),
-        ("GK", "LB", 0.3)
-    ]
+    # Format percentages
+    for col in ['success_rate', 'short_pass_pct', 'long_pass_pct', 'pressure_pct']:
+        if col in gk_df.columns:
+            gk_df[col] = gk_df[col].apply(lambda x: f"{x:.1%}")
     
-    # Plot connections
-    for start, end, width in connections:
-        fig.add_trace(go.Scatter(
-            x=[sample_positions[start][0], sample_positions[end][0]],
-            y=[sample_positions[start][1], sample_positions[end][1]],
-            mode='lines',
-            line=dict(width=width*5, color='rgba(255, 255, 255, 0.7)'),
-            hoverinfo='none',
-            showlegend=False
-        ))
-    
-    # Plot positions
-    for position, (x, y) in sample_positions.items():
-        fig.add_trace(go.Scatter(
-            x=[x],
-            y=[y],
-            mode='markers',
-            marker=dict(size=12, color='blue' if position != "GK" else 'cyan'),
-            name=position,
-            hoverinfo='text',
-            hovertext=position
-        ))
-    
-    st.plotly_chart(fig, use_container_width=True)
+    st.dataframe(gk_df[display_cols], use_container_width=True)
+else:
+    st.warning("No goalkeeper data available. Please check the data source.")
 
 # Footer
 st.markdown("---")
-st.markdown("© 2025 xT-GK Analysis Tool")
+st.markdown("""
+**Created by:** Jeffrey Eyestone | **Email:** j@eyestone.us | **Phone:** +1 (720) 625-2425
+
+This application uses the StatsBomb Open Data for analysis. All visualizations and metrics are based on the xT-GK framework.
+""")

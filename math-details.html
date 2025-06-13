@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>xT-GK: Mathematical Details | Jeffrey Eyestone</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body class="math-details-page">
+    <header>
+        <nav>
+            <div class="logo">xT-GK</div>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#methodology">Methodology</a></li>
+                <li><a href="index.html#applications">Applications</a></li>
+                <li><a href="index.html#case-studies">Case Studies</a></li>
+                <li><a href="index.html#resources">Resources</a></li>
+                <li><a href="math-details.html" class="active">Mathematical Details</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="math-details-hero">
+        <div class="container">
+            <h1>Mathematical Foundations of xT-GK</h1>
+            <h2>A Technical Deep Dive</h2>
+            <p class="author">By Jeffrey Eyestone</p>
+            <p class="contact-info">Email: <a href="mailto:j@eyestone.us">j@eyestone.us</a> | Phone: <a href="tel:+17206252425">+1 (720) 625-2425</a></p>
+        </div>
+    </section>
+
+    <section class="math-details-content">
+        <div class="container">
+            <div class="toc">
+                <h3>Table of Contents</h3>
+                <ul>
+                    <li><a href="#introduction">1. Introduction</a></li>
+                    <li><a href="#comparison">2. Mathematical Comparison: xT vs. xT-GK</a></li>
+                    <li><a href="#novel-components">3. Novel Mathematical Components</a></li>
+                    <li><a href="#customizable-variables">4. Customizable Variables and Parameters</a></li>
+                    <li><a href="#data-value-framework">5. Data-to-Value Framework Mapping</a></li>
+                    <li><a href="#advanced-extensions">6. Advanced Mathematical Extensions</a></li>
+                    <li><a href="#team-customization">7. Team-Specific Implementation Strategies</a></li>
+                    <li><a href="#practical-applications">8. Practical Applications and Case Studies</a></li>
+                    <li><a href="#future-directions">9. Future Research Directions</a></li>
+                </ul>
+            </div>
+
+            <div id="introduction" class="math-section">
+                <h2>1. Introduction</h2>
+                <p>The xT-GK framework extends the traditional Expected Threat (xT) model to properly value goalkeeper distribution decisions. While xT has revolutionized how possession value is quantified in football, it fails to account for the unique context in which goalkeepers operate. This document provides a comprehensive mathematical foundation for xT-GK, detailing the formal definitions, equations, and novel components that make it specifically applicable to goalkeeper analysis.</p>
+                
+                <p>The mathematical formulations presented here are designed to be rigorous enough for academic peer review while maintaining clear connections to practical football applications. Each component is defined with precise mathematical notation and accompanied by explanations of how it manifests in real-world goalkeeper scenarios.</p>
+            </div>
+
+            <div id="comparison" class="math-section">
+                <h2>2. Mathematical Comparison: xT vs. xT-GK</h2>
+                
+                <h3>2.1 Traditional xT Framework</h3>
+                <p>The traditional Expected Threat (xT) model, as formulated by Karun Singh, defines the value of possession in a zone \(z\) as the expected goals that will result from having possession in that zone:</p>
+                
+                <div class="math-formula">
+                    <p>\[ xT(z) = \sum_{z'} P(z \rightarrow z') \cdot xT(z') + P(z \rightarrow shot) \cdot xG(z) \]</p>
+                </div>
+                
+                <p>Where:</p>
+                <ul>
+                    <li>\(P(z \rightarrow z')\) is the probability of moving the ball from zone \(z\) to zone \(z'\)</li>
+                    <li>\(P(z \rightarrow shot)\) is the probability of taking a shot from zone \(z\)</li>
+                    <li>\(xG(z)\) is the expected goals value of a shot from zone \(z\)</li>
+                </ul>
+                
+                <p>The value of an action moving the ball from zone \(z\) to zone \(z'\) is then calculated as:</p>
+                
+                <div class="math-formula">
+                    <p>\[ V(z \rightarrow z') = xT(z') - xT(z) \]</p>
+                </div>
+                
+                <h3>2.2 xT-GK Framework</h3>
+                <p>The xT-GK framework extends this model by incorporating goalkeeper-specific factors:</p>
+                
+                <div class="math-formula">
+                    <p>\[ xT\text{-}GK(z, z', p) = xT(z') + PEV(z, z', p) - RAV(z, z', p) \]</p>
+                </div>
+                
+                <p>Where:</p>
+                <ul>
+                    <li>\(z\) is the starting zone (typically in the defensive third)</li>
+                    <li>\(z'\) is the target zone</li>
+                    <li>\(p\) is the pressure level, represented as a multi-dimensional tensor</li>
+                    <li>\(PEV(z, z', p)\) is the Pressure Escape Value</li>
+                    <li>\(RAV(z, z', p)\) is the Risk-Adjusted Value</li>
+                </ul>
+                
+                <h3>2.3 Key Mathematical Differences</h3>
+                
+                <h4>2.3.1 Pressure-Adjusted Transition Probabilities</h4>
+                <p>Traditional xT uses fixed transition probabilities, while xT-GK conditions these on pressure:</p>
+                
+                <div class="math-formula">
+                    <p>\[ P(z \rightarrow z') \quad \text{vs.} \quad P(z \rightarrow z' | p) \]</p>
+                </div>
+                
+                <p>This allows for more accurate modeling of how pressure affects completion probability.</p>
+                
+                <h4>2.3.2 Defensive Zone Revaluation</h4>
+                <p>xT-GK revalues zones in the defensive third using a spatial convolution function:</p>
+                
+                <div class="math-formula">
+                    <p>\[ \phi(z, d) = \alpha \cdot \left(1 - \frac{d}{D_{max}}\right)^{-\beta} \]</p>
+                </div>
+                
+                <p>Where \(d\) is the distance from the goal, \(\alpha\) and \(\beta\) are parameters controlling the decay rate, and \(D_{max}\) is the maximum distance on the pitch.</p>
+                
+                <h4>2.3.3 Pressure Escape Value</h4>
+                <p>xT-GK introduces a Pressure Escape Value component:</p>
+                
+                <div class="math-formula">
+                    <p>\[ PEV(z, z', p) = \gamma \cdot (p_{level} - p'_{level}) \cdot xT(z') \]</p>
+                </div>
+                
+                <p>Where \(\gamma\) is a scaling parameter (typically 0.25) and \(p_{level}\) represents pressure intensity.</p>
+                
+                <h4>2.3.4 Risk-Adjusted Value Function</h4>
+                <p>xT-GK explicitly models risk through a Risk-Adjusted Value function:</p>
+                
+                <div class="math-formula">
+                    <p>\[ RAV(z, z', p) = xT(z') \cdot \delta \cdot P_{loss}(z, z', p) \cdot C(z) \]</p>
+                </div>
+                
+                <p>Where \(\delta\) is a risk aversion parameter, \(P_{loss}\) is the probability of losing possession, and \(C(z)\) is the cost function for zone \(z\).</p>
+            </div>
+
+            <div id="novel-components" class="math-section">
+                <h2>3. Novel Mathematical Components</h2>
+                
+                <h3>3.1 Pressure Tensor Representation</h3>
+                <p>Pressure in xT-GK is represented as a multi-dimensional tensor \(p\) that captures various aspects of the pressing situation:</p>
+                
+                <div class="math-formula">
+                    <p>\[ p = [p_{proximity}, p_{time}, p_{angle}, p_{intensity}] \]</p>
+                </div>
+                
+                <p>Where:</p>
+                <ul>
+                    <li>\(p_{proximity}\) is the distance of the nearest opponent (in meters)</li>
+                    <li>\(p_{time}\) is the time available for decision-making (in seconds)</li>
+                    <li>\(p_{angle}\) is the angle of pressure application (in radians)</li>
+                    <li>\(p_{intensity}\) is a measure of pressing intensity (normalized 0-1)</li>
+                </ul>
+                
+                <p>This tensor is then mapped to a scalar pressure level using a function \(f_p\):</p>
+                
+                <div class="math-formula">
+                    <p>\[ p_{level} = f_p(p) = w_1 \cdot p_{proximity}^{-1} + w_2 \cdot p_{time}^{-1} + w_3 \cdot p_{angle} + w_4 \cdot p_{intensity} \]</p>
+                </div>
+                
+                <p>Where \(w_1, w_2, w_3, w_4\) are weighting parameters that can be calibrated based on empirical data.</p>
+                
+                <h3>3.2 Spatial Convolution</h3>
+                <p>The spatial convolution function \(\phi(z, d)\) revalues zones based on their distance from the goal:</p>
+                
+                <div class="math-formula">
+                    <p>\[ \phi(z, d) = \alpha \cdot \left(1 - \frac{d}{D_{max}}\right)^{-\beta} \]</p>
+                </div>
+                
+                <p>This function increases the value of zones closer to the goalkeeper's goal, reflecting the higher risk associated with losing possession in these areas.</p>
+                
+                <p>The adjusted xT value for a zone is then:</p>
+                
+                <div class="math-formula">
+                    <p>\[ xT_{adj}(z) = xT(z) \cdot \phi(z, d) \]</p>
+                </div>
+                
+                <h3>3.3 Temporal Sequence Modeling</h3>
+                <p>xT-GK incorporates temporal discounting to value distribution sequences:</p>
+                
+                <div class="math-formula">
+                    <p>\[ V_{sequence} = \sum_{t=0}^{T} \eta^t \cdot xT\text{-}GK(z_t, z_{t+1}, p_t) \]</p>
+                </div>
+                
+                <p>Where \(\eta\) is a discount factor (typically 0.8) and \(t\) represents time steps in the sequence.</p>
+                
+                <h3>3.4 Bayesian Inference for Parameter Updating</h3>
+                <p>xT-GK employs Bayesian inference to continuously update model parameters based on observed outcomes:</p>
+                
+                <div class="math-formula">
+                    <p>\[ P(\theta | D) \propto P(D | \theta) \cdot P(\theta) \]</p>
+                </div>
+                
+                <p>Where \(\theta\) represents model parameters and \(D\) is observed distribution data.</p>
+                
+                <p>This allows for goalkeeper-specific calibration of the model, adapting to individual tendencies and strengths.</p>
+                
+                <h3>3.5 Non-Linear Value Aggregation</h3>
+                <p>Unlike traditional xT, which uses linear aggregation, xT-GK employs non-linear value aggregation to account for diminishing returns and synergistic effects:</p>
+                
+                <div class="math-formula">
+                    <p>\[ V_{agg}(z_1, z_2, ..., z_n) = \sum_{i=1}^{n} xT\text{-}GK(z_i) + \sum_{i=1}^{n}\sum_{j=i+1}^{n} \lambda_{ij} \cdot xT\text{-}GK(z_i) \cdot xT\text{-}GK(z_j) \]</p>
+                </div>
+                
+                <p>Where \(\lambda_{ij}\) represents the interaction coefficient between zones \(z_i\) and \(z_j\).</p>
+            </div>
+
+            <div id="customizable-variables" class="math-section">
+                <h2>4. Customizable Variables and Parameters</h2>
+                
+                <h3>4.1 Core Model Parameters</h3>
+                <p>The xT-GK framework includes several core parameters that can be adjusted to customize the model:</p>
+                
+                <div class="math-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Parameter</th>
+                                <th>Symbol</th>
+                                <th>Typical Range</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Risk Aversion</td>
+                                <td>\(\delta\)</td>
+                                <td>0.6 - 1.4</td>
+                                <td>Controls the penalty for risky distributions</td>
+                            </tr>
+                            <tr>
+                                <td>Pressure Escape Value Scaling</td>
+                                <td>\(\gamma\)</td>
+                                <td>0.15 - 0.35</td>
+                                <td>Scales the value of escaping pressure</td>
+                            </tr>
+                            <tr>
+                                <td>Spatial Convolution Amplitude</td>
+                                <td>\(\alpha\)</td>
+                                <td>1.8 - 2.5</td>
+                                <td>Controls the base multiplier for zone revaluation</td>
+                            </tr>
+                            <tr>
+                                <td>Spatial Convolution Decay</td>
+                                <td>\(\beta\)</td>
+                                <td>0.7 - 1.2</td>
+                                <td>Controls how quickly zone values decay with distance</td>
+                            </tr>
+                            <tr>
+                                <td>Temporal Discount Factor</td>
+                                <td>\(\eta\)</td>
+                                <td>0.7 - 0.9</td>
+                                <td>Controls the value decay over time steps</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h3>4.2 Feature Engineering Variables</h3>
+                <p>Several feature engineering variables can be adjusted to customize the model's behavior:</p>
+                
+                <div class="math-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Variable</th>
+                                <th>Symbol</th>
+                                <th>Range/Options</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Pressure Tensor Weights</td>
+                                <td>\(w_1, w_2, w_3, w_4\)</td>
+                                <td>0.0 - 1.0 (normalized)</td>
+                                <td>Weights for diff
+(Content truncated due to size limit. Use line ranges to read in chunks)
